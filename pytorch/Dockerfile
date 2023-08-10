@@ -1,16 +1,15 @@
 ARG UBUNTU_VERSION=20.04
 ARG CUDA_VERSION=11.3.1
-ARG CUDA=11.3
-ARG CUDNN_VERSION=8
+ARG CUDA=12.0
 
-FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-devel-ubuntu${UBUNTU_VERSION}
+FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
 LABEL maintainer "http://gzupark.dev"
 
 ARG CUDA_VERSION
 ARG CUDA
-ARG UID=
-ARG USER_NAME=
-ARG PYTHON_VERSION=3.8
+ARG UID=1017
+ARG USER_NAME=juyoung
+ARG PYTHON_VERSION=3.10
 ARG CONDA_ENV_NAME=torch
 
 # Let us install tzdata painlessly
@@ -74,9 +73,9 @@ ENV PATH /usr/local/envs/$CONDA_ENV_NAME/bin:$PATH
 RUN echo "source activate ${CONDA_ENV_NAME}" >> ~/.bashrc
 
 # Enable jupyter lab
-RUN source activate ${CONDA_ENV_NAME} && \
-    conda install -c conda-forge jupyterlab && \
-    jupyter serverextension enable --py jupyterlab --sys-prefix
+# RUN source activate ${CONDA_ENV_NAME} && \
+#     conda install -c conda-forge jupyterlab && \
+#     jupyter serverextension enable --py jupyterlab --sys-prefix
 
 # Install the packages
 # RUN source activate ${CONDA_ENV_NAME} && \
