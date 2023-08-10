@@ -79,5 +79,5 @@ RUN source activate ${CONDA_ENV_NAME} && \
     jupyter serverextension enable --py jupyterlab --sys-prefix
 
 # Install the packages
-RUN source activate ${CONDA_ENV_NAME} && \
-    conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+# RUN source activate ${CONDA_ENV_NAME} && \
+#    conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
