@@ -1,6 +1,6 @@
 ARG UBUNTU_VERSION=20.04
 ARG CUDA_VERSION=11.8.0
-ARG CUDA=12.0
+ARG CUDA=11.8
 
 FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
 LABEL maintainer "http://gzupark.dev"
