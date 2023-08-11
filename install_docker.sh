@@ -30,3 +30,10 @@ echo \
 
 echo "Docker repository setup completed! You can now install Docker from the repository."
 
+# Step 5: Update the apt package index (again)
+echo "Updating the apt package index again..."
+apt-get update
+
+# Step 6: Install Docker CE, Docker CE CLI, and Containerd.io
+echo "Installing Docker..."
+apt-get install -y docker-ce docker-ce-cli containerd.io

@@ -3,5 +3,10 @@ My Dockerfiles for deep learning research. A lot of the code are borrowed heavil
 
 
 ## Commands
+
+```bash
+sudo apt-get install lsb-release
+```
+
 To be added
 
