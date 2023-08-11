@@ -1,5 +1,5 @@
 ARG UBUNTU_VERSION=20.04
-ARG CUDA_VERSION=11.3.1
+ARG CUDA_VERSION=11.8.0
 ARG CUDA=12.0
 
 FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
@@ -65,12 +65,15 @@ RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config && \
     echo "UsePAM no" >> /etc/ssh/sshd_config
 
 USER $USER_NAME
+
 SHELL ["/bin/bash", "-c"]
 
 # Create the conda environment
 RUN conda create -n $CONDA_ENV_NAME python=$PYTHON_VERSION
 ENV PATH /usr/local/envs/$CONDA_ENV_NAME/bin:$PATH
 RUN echo "source activate ${CONDA_ENV_NAME}" >> ~/.bashrc
+
+WORKDIR /home/$USER_NAME
 
 # Enable jupyter lab
 # RUN source activate ${CONDA_ENV_NAME} && \
